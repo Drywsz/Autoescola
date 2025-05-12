@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.navbar {
+    position: fixed;
+    display: flex;
+    justify-content: space-between; /* Distribui os itens da navbar */
+    align-items: center; /* Centraliza verticalmente os itens */
+    width: 100%;
+    background-color: #343a40;
+    padding: 0 1rem; /* Adiciona espaçamento interno horizontal */
+    height: 80px; /* Define uma altura fixa para a navbar */
+}
+
+
+.nav-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 3rem;
+    width: 100%;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.logo {
+    max-width: 300px; /* Define um tamanho fixo para a largura */
+    max-height: 200px; /* Define um tamanho fixo para a altura */
+    object-fit: contain; /* Ajusta a imagem sem distorção */
+    margin: 0; /* Remove qualquer margem */
+    padding: 0; /* Remove qualquer espaçamento interno */
+}
+
+
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+    background-color: #343a40;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.social-media{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.footer-title{
+    font-size: 1rem;
+    color: white;
+}
+
+.imagem-principal {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centraliza verticalmente */
+    width: 100%;
+    height: 100%;
+}
+
+.imagem-principal img {
+    max-width: 100%; /* Garante que a largura da imagem não ultrapasse o contêiner */
+    max-height: 100%; /* Garante que a altura da imagem não ultrapasse o contêiner */
+    object-fit: cover; /* Ajusta a imagem para cobrir o espaço sem distorção */
+}
+
+.social-media{
+    display: flex;
+    justify-content: center;
+    width: 10px; /* Define um tamanho fixo para a largura */
+    height: 10px;
+
+}
