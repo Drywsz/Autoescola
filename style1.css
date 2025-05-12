@@ -46,6 +46,7 @@ html {
     object-fit: contain; /* Ajusta a imagem sem distorção */
     margin: 0; /* Remove qualquer margem */
     padding: 0; /* Remove qualquer espaçamento interno */
+    display: flex;
 }
 
 
@@ -55,9 +56,10 @@ html {
     justify-content: center;
     align-items: center;
     padding: 2rem 0;
-    background-color: #343a40;
+    background-color: #282d31;
     flex-direction: column;
     gap: 2rem;
+    height: 200px;
 }
 
 .social-media{
@@ -70,6 +72,13 @@ html {
 .footer-title{
     font-size: 1rem;
     color: white;
+    margin-top: 2rem;;
+}
+
+.copy {
+    font-size: 0.9rem;
+    color: white;
+    text-align: center;
 }
 
 .imagem-principal {
@@ -86,10 +95,27 @@ html {
     object-fit: cover; /* Ajusta a imagem para cobrir o espaço sem distorção */
 }
 
+.imagem-sobreposta{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
 .social-media{
     display: flex;
     justify-content: center;
-    width: 10px; /* Define um tamanho fixo para a largura */
-    height: 10px;
+    align-items: center;
+    gap: 2rem;
+    flex-direction: row; /* Alinha os itens em linha */ 
+}
 
+.social-media-link img{
+    width: 40px; /* Define a largura máxima da imagem */
+    height: 40px; /* Define a altura máxima da imagem */
+    object-fit: contain;
 }
