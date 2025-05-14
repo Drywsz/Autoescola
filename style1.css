@@ -38,20 +38,11 @@ html {
     color: white;
     font-size: 1.2rem;
     padding: 1rem 2rem;
-    position: relative; /* Necessário para o uso do ::before */
+    position: relative; /* Necessário para o uso do ::after */
     transition: color 0.3s ease-in-out;
 }
 
-.nav-link {
-    text-decoration: none;
-    color: white;
-    font-size: 1.2rem;
-    padding: 1rem 2rem;
-    position: relative; /* Necessário para o uso do ::before */
-    transition: color 0.3s ease-in-out;
-}
-
-.nav-link::before {
+.nav-link::after {
     content: ''; /* Cria um elemento vazio */
     position: absolute;
     top: 0;
@@ -59,16 +50,129 @@ html {
     width: 100%;
     height: 100%;
     border: 2px solid transparent; /* Inicialmente invisível */
-    border-radius: 5px; /* Opcional: arredonda os cantos */
+    border-image: linear-gradient(45deg, #bda435, #343a40) 1; /* Degradê acinzentado */
     box-sizing: border-box; /* Inclui a borda no tamanho total */
-    clip-path: polygon(50% 100%, 50% 100%, 50% 100%, 50% 100%); /* Começa no meio da parte inferior */
-    transition: clip-path 0.5s ease-in-out; /* Animação suave para desenhar o quadrado */
+    transform: scale(1); /* Mantém o tamanho total */
+    transform-origin: bottom right; /* Origem da animação */
+    clip-path: polygon(100% 100%, 100% 100%, 100% 100%, 100% 100%); /* Começa no canto inferior direito */
+    transition: clip-path 0.5s ease-in-out; /* Animação suave */
+    z-index: -1; /* Garante que a borda fique atrás do texto */
 }
 
-.nav-link:hover::before {
-    border-color: white; /* Define a cor da borda ao passar o mouse */
-    clip-path: polygon(50% 100%, 50% 0, 100% 0, 100% 100%, 0 100%, 0 0, 50% 0, 50% 100%); /* Desenha o quadrado subindo */
+.nav-link:hover::after {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Desenha o quadrado completo */
 }
+
+/* Estilo para a barra de pesquisa */
+.barra-de-pesquisa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto; /* Alinha à direita na navbar */
+    margin-right: 1rem;
+}
+
+.form-pesquisa {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Espaçamento entre o input e o botão */
+}
+
+.input-wrapper {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    background-color: #343a40;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.barra {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background: transparent;
+    color: white;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.barra::placeholder {
+    color: #bdbdbd;
+}
+
+.input-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.input-wrapper.slide-in::before {
+    animation: slide-in 0.5s ease-in-out forwards;
+}
+
+.input-wrapper.slide-out::before {
+    animation: slide-out 0.5s ease-in-out forwards;
+}
+
+.barra:focus {
+    outline: none;
+    color: black;
+}
+
+@keyframes slide-in {
+    from {
+        left: 100%;
+    }
+    to {
+        left: 0;
+    }
+}
+
+@keyframes slide-out {
+    from {
+        left: 0;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+
+/* Estilo para o botão */
+.botao {
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #bda435;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.botao:hover {
+    background-color: #a88f2e; /* tom dourado escuro */
+    transform: translateY(-2px); /* sutil levantamento */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.botao:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
 
 .logo {
     max-width: 300px; /* Define um tamanho fixo para a largura */

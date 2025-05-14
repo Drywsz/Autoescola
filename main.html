@@ -16,14 +16,18 @@
             <li><a href="#" class="nav-link">Login</a></li>
             <li><a href="#" class="nav-link">Contato</a></li>
 
-            <div class="barra-de-pesquisa">
-                <form class="form-pesquisa" action="#" method="get">
+        </ul> <!-- fechamento correto da lista de navegação -->
+        <div class="barra-de-pesquisa">
+            <form class="form-pesquisa" action="#" method="get">
+                <div class="input-wrapper">
                     <input class="barra" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-                    <button class="botao" type="submit">Pesquisar</button>
-                </form>
-            </div>
-        </ul>
+                </div>
+                <button class="botao" type="submit">Pesquisar</button>
+            </form>
+        </div>
+
     </nav>
+
 
     <div class="imagem-principal">
         <img src="img1.jpg" alt="Imagem do fundo">
@@ -42,10 +46,38 @@
                 <a href="#" target="_blank" class="social-media-link"><img
                         src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg"
                         alt="Instagram"></a>
-                <a href="#" target="_blank" class="social-media-link"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"></a>
+                <a href="#" target="_blank" class="social-media-link"><img
+                        src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"></a>
             </ul>
         </div>
     </footer>
 </body>
+
+<script>
+    const input = document.querySelector('.barra');
+    const wrapper = input.closest('.input-wrapper');
+    const form = document.querySelector('.form-pesquisa');
+    const button = form.querySelector('.botao');
+
+    let preventSlideOut = false;
+
+    input.addEventListener('focus', () => {
+        wrapper.classList.remove('slide-out');
+        wrapper.classList.add('slide-in');
+    });
+
+    input.addEventListener('blur', () => {
+        if (!preventSlideOut) {
+            wrapper.classList.remove('slide-in');
+            wrapper.classList.add('slide-out');
+        }
+        preventSlideOut = false; // reseta para o próximo uso
+    });
+
+    button.addEventListener('mousedown', () => {
+        // Quando o botão for pressionado, evita o slide-out no blur
+        preventSlideOut = true;
+    });
+</script>
 
 </html>
